@@ -1,5 +1,5 @@
 {
-  "name": "@nubebytes/angular-archwizard",
+  "name": "@fercik/angular-archwizard",
   "version": "18.0.0",
   "license": "MIT",
   "description": "An Angular 14+ module containing a wizard component and its supporting components and directives",
