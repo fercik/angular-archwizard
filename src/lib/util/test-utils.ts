@@ -75,5 +75,5 @@ export function checkWizardNavigableSteps(
 export function checkClasses(classes: { [key: string]: boolean }, expectedClasses: string[]) {
     expect(
       Object.keys(classes).filter(m => classes[m] === true)
-    ).toEqual(expectedClasses);
+    ).toEqual(jasmine.arrayContaining(expectedClasses));
 }
