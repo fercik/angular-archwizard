@@ -226,13 +226,15 @@ $aw-param-step-state: null;
 
 // Defines the line that strings together circles representing wizard steps, in the vertical layout
 @mixin aw-vertical-line($dot-width, $dot-height, $line-color) {
-  background-color: $line-color;
-  content: '';
-  position: absolute;
-  left: calc(-1 * $dot-height / 2);
-  top: $dot-height;
-  height: calc(100% - #{$dot-height});
-  width: 1px;
+  & {
+    background-color: $line-color;
+    content: '';
+    position: absolute;
+    left: calc(-1 * $dot-height / 2);
+    top: $dot-height;
+    height: calc(100% - #{$dot-height});
+    width: 1px;
+  }
 
   @include rtl {
     left: auto;
@@ -242,20 +244,24 @@ $aw-param-step-state: null;
 
 // Defines a circle representing a wizard step
 @mixin aw-circle($dot-width, $dot-height, $dot-border-width) {
-  position: absolute;
-  width: $dot-width;
-  height: $dot-height;
-  text-align: center;
-  vertical-align: middle;
-  line-height: $dot-height - 2 * $dot-border-width;
-  transition: 0.25s;
-  border-radius: 100%;
+  & {
+    position: absolute;
+    width: $dot-width;
+    height: $dot-height;
+    text-align: center;
+    vertical-align: middle;
+    line-height: $dot-height - 2 * $dot-border-width;
+    transition: 0.25s;
+    border-radius: 100%;
+  }
 }
 
 // Positions a circle in the horizontal layout of the navigation bar
 @mixin aw-circle-position-horizontal($dot-width, $dot-height, $dot-border-width) {
-  top: -$dot-height;
-  left: calc(50% - #{$dot-width} / 2);
+  & {
+    top: -$dot-height;
+    left: calc(50% - #{$dot-width} / 2);
+  }
 
   @include rtl {
     left: auto;
@@ -265,8 +271,10 @@ $aw-param-step-state: null;
 
 // Positions a circle in the vertical layout of the navigation bar
 @mixin aw-circle-position-vertical($dot-width, $dot-height, $dot-border-width) {
-  top: 0;
-  left: -$dot-width;
+  & {
+    top: 0;
+    left: -$dot-width;
+  }
 
   @include rtl {
     left: auto;
@@ -303,14 +311,16 @@ $aw-param-step-state: null;
   $aw-param-indicator-height: $height !global;
   $aw-param-indicator-border-width: $border-width !global;
 
-  @if ($layout == 'horizontal') {
-    padding: ($height + $aw-text-padding-bottom) 0 $aw-text-padding-bottom 0;
-  }
-  @else if ($layout == 'vertical') {
-    padding: calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2 + $height);
+  & {
+    @if ($layout == 'horizontal') {
+      padding: ($height + $aw-text-padding-bottom) 0 $aw-text-padding-bottom 0;
+    }
+    @else if ($layout == 'vertical') {
+      padding: calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2 + $height);
 
-    @include rtl {
-      padding: calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2 + $height) calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2);
+      @include rtl {
+        padding: calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2 + $height) calc($aw-distance-between-steps / 2) calc($aw-distance-between-steps / 2);
+      }
     }
   }
 
@@ -341,68 +351,92 @@ $aw-param-step-state: null;
       $aw-param-indicator-state: 'default' !global;
       $aw-param-step-state: 'default' !global;
       @include aw-circle($width, $height, $border-width);
-      @content;
+      & {
+        @content;
+      }
     }
     &.optional .step-indicator {
       $aw-param-indicator-state: 'default' !global;
       $aw-param-step-state: 'optional' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     &.done .step-indicator {
       $aw-param-indicator-state: 'default' !global;
       $aw-param-step-state: 'done' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     &.current .step-indicator {
       $aw-param-indicator-state: 'default' !global;
       $aw-param-step-state: 'current' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     &.editing .step-indicator {
       $aw-param-indicator-state: 'default' !global;
       $aw-param-step-state: 'editing' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     // 'completed' class takes priority
     // https://github.com/madoar/angular-archwizard/pull/221
     &.completed .step-indicator {
       $aw-param-indicator-state: 'default' !global;
       $aw-param-step-state: 'done' !global;
-      @content;
+      & {
+        @content;
+      }
     }
 
     &.navigable a:hover .step-indicator {
       $aw-param-indicator-state: 'hover' !global;
       $aw-param-step-state: 'default' !global;
       @include aw-circle($width, $height, $border-width);
-      @content;
+      & {
+        @content;
+      }
     }
     &.navigable.optional a:hover .step-indicator {
       $aw-param-indicator-state: 'hover' !global;
       $aw-param-step-state: 'optional' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     &.navigable.done a:hover .step-indicator {
       $aw-param-indicator-state: 'hover' !global;
       $aw-param-step-state: 'done' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     &.navigable.current a:hover .step-indicator {
       $aw-param-indicator-state: 'hover' !global;
       $aw-param-step-state: 'current' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     &.navigable.editing a:hover .step-indicator {
       $aw-param-indicator-state: 'hover' !global;
       $aw-param-step-state: 'editing' !global;
-      @content;
+      & {
+        @content;
+      }
     }
     // 'completed' class takes priority
     // https://github.com/madoar/angular-archwizard/pull/221
     &.navigable.completed a:hover .step-indicator {
       $aw-param-indicator-state: 'hover' !global;
       $aw-param-step-state: 'done' !global;
-      @content;
+      & {
+        @content;
+      }
     }
   }
 }
