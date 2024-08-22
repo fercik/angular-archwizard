@@ -1,6 +1,6 @@
 {
   "name": "@fercik/angular-archwizard",
-  "version": "18.0.0",
+  "version": "18.0.1",
   "license": "MIT",
   "description": "An Angular 14+ module containing a wizard component and its supporting components and directives",
   "homepage": "https://github.com/fercik/angular-archwizard",
